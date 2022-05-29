@@ -1,0 +1,207 @@
+1) PROUD STUDENTS
+
+// JAVA SOLUTION
+
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc=new Scanner(System.in);
+       int t = sc.nextInt();int count=0;int fin=0;
+        for(int i=0;i<t;i++)
+        {
+            count=0;fin=0;
+            int n=sc.nextInt();
+            int arr[]=new int[n];
+            //accepting
+            for(int j=0;j<n;j++)
+            {
+                arr[j]=sc.nextInt();
+            }
+            //sorting
+            Arrays.sort(arr);
+            //System.out.println(Arrays.toString(arr));
+            for(int k=0;k<n;k++){
+                count=0;
+                for(int l=k+1;l<n;l++)
+                {
+                     if(arr[k]!=arr[l])
+                    {
+                        count++;
+                    }
+                }
+                int less=n-count;
+                //System.out.println(count);
+            if(less>count)
+            {
+                fin++;
+            }
+            
+            
+            }
+            
+            System.out.println(fin);
+        }
+        
+       
+        
+    }
+}
+
+
+2) The madness of Multiverse
+
+// Java Solution
+
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        for(int i=0;i<t;i++)
+        {
+            int num=sc.nextInt();
+            int tot = -(num-(-1));
+            System.out.println(tot);
+            
+        }
+    }
+}
+
+
+3)  Get your dream Job
+
+// Java Solution
+
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+	  // here u can also generate these numbers 
+        String s="101 111 121 131 141 151 161 171 181 191 202 212 222 232 242 252 262 272 282 292 303 313 323 333 343 353 363 373 383 393 404 414 424 434 444 454 464 474 484 494 505 515 525 535 545 555 565 575 585 595 606 616 626 636 646 656 666 676 686 696 707 717 727 737 747 757 767 777 787 797 808 818 828 838 848 858 868 878 888 898 909 919 929 939 949 959 969 979 989 999";
+        String arr[]=s.split(" ");
+        int len=arr.length;
+       // System.out.println(len);
+        Scanner sc=new Scanner(System.in);
+        System.out.print("[");
+        for(int j=0;j<6;j++)
+        {
+            int a=sc.nextInt();
+            if(a<=arr.length)
+            {
+                if(j!=5)
+            {
+                System.out.print(arr[a-1]+",");
+            }
+            
+            if(j==5)
+            {
+                System.out.print(arr[a-1]);
+            }
+            
+           }
+            else{
+                if(j==5)
+                {
+                 System.out.print("-1");   
+                }
+                else{
+                     System.out.print("-1,");
+                }
+           
+        }
+            
+            
+            
+            }
+        System.out.print("]");
+      
+    }
+}
+
+
+4)  Sorted Box
+
+// Java Solution
+
+
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        int target = sc.nextInt();
+        int arr[]=new int[N];int ind=0,t=0;
+        for(int i=0;i<N;i++)
+        {
+            arr[i]=sc.nextInt();
+        }
+        for(int i=0;i<N;i++)
+        {
+            if(arr[i]<=target)
+            {
+                t=arr[i];
+                ind=i;
+                
+            }
+                
+            //arr[i]=sc.nextInt();
+        }
+        if(t==target){
+            System.out.println(ind);
+        }
+        else{
+            System.out.println(ind+1);
+        }
+        
+    }
+}
+
+
+5) Pre Result Day
+
+// Java Solution
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc = new Scanner(System.in);
+        int T =sc.nextInt();
+        for(int i=1;i<=T;i++)
+        {
+            int n =sc.nextInt();
+            int x=sc.nextInt();
+            int P=sc.nextInt();
+            int pos=x*3;
+            int neg=(n-x)*(-1);
+            int total = pos+neg;
+            if(total>=P){
+                System.out.println("PASS");
+            }
+            else{
+                System.out.println("FAIL");
+            }
+        }
+    }
+}
