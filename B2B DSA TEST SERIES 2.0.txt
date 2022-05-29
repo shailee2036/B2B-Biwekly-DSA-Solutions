@@ -1,0 +1,338 @@
+1) Nobita's Game
+
+// JAVA SOLUTION
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+static int count=0;
+   static int fact (int n)
+    {
+        int fact=1;
+        for(int i=1;i<=n;i++)
+        {
+            fact=fact*i;
+        }
+        return fact;
+    }
+    static boolean isVowel(char ch)
+    {
+        if(ch=='A'|| ch=='E'|| ch=='I'|| ch=='O'|| ch=='U')
+        {
+            return true;
+        }
+          else
+        {
+            return false;
+        }
+          
+    }
+    static int permute(String s,String answer)
+    {
+        int freq=0;
+        if (s.length() == 0)
+    {
+        freq++;
+        String abc=answer+"";
+        if(isVowel(abc.charAt(0))==true && isVowel(abc.charAt(abc.length()-1))==true)
+        {
+            count++;
+        }
+     
+    }
+     
+    for(int i = 0 ;i < s.length(); i++)
+    {
+        char ch = s.charAt(i);
+        String left_substr = s.substring(0, i);
+        String right_substr = s.substring(i + 1);
+        String rest = left_substr + right_substr;
+        permute(rest, answer + ch);
+    }
+     return count;
+    }
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner scan = new Scanner(System.in);
+     
+    String str;
+    String answer="";
+    str = scan.nextLine();
+    String news="";
+        str=str.toUpperCase();
+        str=str.replaceAll(" ", "");
+        for(int i=0;i<str.length();i++)
+        {
+            char ch=str.charAt(i);
+            if(ch>='A' && ch<='Z'&& ch!=' ')
+                news=news+ch;
+        }
+
+    int ans1=permute(news, answer);
+        int div=fact(news.length());
+    float fi=(ans1*100)/div;
+       
+        System.out.printf("%.2f",fi);
+    }
+}
+
+
+// C language Solution
+
+#include<stdio.h>
+#include<string.h>
+int n,count=0;
+int both=0;
+void ratio(char *a)
+{
+    if((a[0] == 'a')||(a[0] == 'e')||(a[0] == 'i')||(a[0] == 'o')||(a[0] == 'u')||(a[0] == 'A')||(a[0] == 'E')||(a[0] == 'I')||(a[0] == 'O')||(a[0] == 'U'))
+    {
+        if((a[n-1] == 'a')||(a[n-1] == 'e')||(a[n-1] == 'i')||(a[n-1] == 'o')||(a[n-1] == 'u')||(a[n-1] == 'A')||(a[n-1] == 'E')||(a[n-1] == 'I')||(a[n-1] == 'O')||(a[n-1] == 'U'))
+        {
+            both++;
+        }
+    }
+  
+}
+void swap(char *x, char *y)
+{
+    char temp;
+    temp = *x;
+    *x = *y;
+    *y = temp;
+}
+
+void permute(char *a, int l, int r)
+{
+    int i;
+    if(l==r)
+    {
+        count++;
+        ratio(a);
+    }
+    else{
+        for(i=l; i<=r; i++)
+        {
+            swap((a+l),(a+i));
+            permute(a,l+1,r);
+            swap((a+l),(a+i));
+        }
+    }
+}
+int main()
+{
+    char str[20];
+    gets(str);
+   for(int i=0,j; str[i]!=0; ++i)
+   {
+       while(!(str[i]>='a' && str[i]<='z')&& !(str[i]>='A' && str[i] <='Z') && !(str[i]=='\0'))
+       {
+           for(j=i; str[j]!='\0'; ++j)
+           {
+               str[j]=str[j+1];
+           }
+           str[j]='\0';
+       }
+   }
+     n=strlen(str);
+     permute(str,0,n-1);
+     float b,n;
+     b=((both*100)/count);
+     n=((none*100)/count);
+    printf("%.2f",b);
+    return 0;
+}
+
+
+
+2) Message Twister
+
+// Java Solution
+
+ import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+    
+    static void encrypt(String str)
+    {
+        String eve="",odd="";
+        for(int i=0;i<str.length();i++)
+        {
+            char ch=str.charAt(i);
+            if(i%2==0)
+            {
+                eve=eve+ch;
+            }
+            else
+            {
+                odd=odd+ch;
+            }
+        }
+        System.out.println(eve+odd);
+    }
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        System.out.println();
+        for(int i=0;i<t;i++)
+        {
+            String s=sc.next();
+            encrypt(s);
+        }
+    }
+}
+
+
+3)  Pot Buyers
+
+// Java Solution
+
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc=new Scanner(System.in);
+           int size=sc.nextInt();
+           int a[]=new int[size];
+           for(int i=0;i<size;i++)
+           {
+               a[i]=sc.nextInt();
+           }
+           int max_so_far = Integer.MIN_VALUE,
+        max_ending_here = 0,start = 0,
+        end = 0, s = 0;
+ 
+        for (int i = 0; i < size; i++)
+        {
+            max_ending_here += a[i];
+ 
+            if (max_so_far < max_ending_here)
+            {
+                max_so_far = max_ending_here;
+                start = s;
+                end = i;
+            }
+ 
+            if (max_ending_here < 0)
+            {
+                max_ending_here = 0;
+                s = i + 1;
+            }
+        }
+        //System.out.println("Maximum contiguous sum is "
+                           //+ max_so_far);
+        int arr[]=new int[2];
+        arr[0]=start;
+        //System.out.println("Starting index " + start);
+        arr[1]=end;
+        //System.out.println("Ending index " + end);
+            System.out.println(Arrays.toString(arr));
+        
+    }
+}   
+                
+
+
+
+4)  Previous Permutation of the String
+
+// Java Solution
+
+import java.util.Scanner;
+ 
+public class previous_permutation {
+ 
+    static String previous(String s)
+    {
+        //if we do operations on string then it will create new String  in stringPull everytime
+        //so convert String into  charArray and do all tasks easily
+        //at last return string by doing "new String(charArray)"
+        char[] A=s.toCharArray();
+	     int n=A.length;//length of charArray
+        int I=0,J=0;
+ 
+        //find last index of decresing element(I) in char array  
+        //start serching from right because we want max index
+        //and swap (I-1) it with the least small element at right side of it.
+        for(int i=n-1;i>=1;i--)
+        {
+            if(A[i-1] > A[i])
+            {
+                I=i;
+                break;
+            }
+        }
+           
+        //if every element is increasing then previous permutation doesn't exist
+        if(I==0)
+        {
+            return s;
+        }
+ 
+        //find largest index of element smaller than A[I-1] at right side of it(J)
+        //start serching from right because we want max index
+        for(int i=n-1;i>=I;i--)
+        {
+            if(A[I-1] > A[i])
+            {
+                J=i;
+                break;
+            }
+        }
+       
+        //swap element at (I-1) and J
+        swap(A,I-1,J);    
+ 
+        //reverse elements from I to n-1 to make sure that part is in increasing order
+        //so ,it can give least smaller String.
+        reverse(A, I,n-1 );
+       
+        //convert char array into String and return it
+        return new String(A);
+    }
+ 
+ 
+    //FUNCTION TO SWAP ARRAY'S ELEMENT AT INDEX I AND J
+    static void swap(char A[], int I, int J)
+    {
+        char temp=A[I];
+        A[I]=A[J];
+        A[J]=temp;
+    }
+ 
+ 
+    //FUNCTION TO REVERSE ARRAY'S  ELEMENTS FROM I TO J
+    static void reverse(char A[], int I, int J)
+    {
+        while(I<=J)
+        {
+            swap(A,I,J);
+            I++;
+            J--;
+        }
+    }
+   
+ 
+    //MAIN FUNCTION
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String s=sc.next();
+        System.out.println(previous(s));
+        sc.close();
+    }
+}
+
+
